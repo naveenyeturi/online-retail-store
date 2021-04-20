@@ -301,8 +301,6 @@ $userid = $_SESSION['user'];
     ?>
     
 
-
-		
 	
 </body>
 </html>
