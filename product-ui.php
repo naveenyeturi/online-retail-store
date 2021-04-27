@@ -54,6 +54,7 @@ if(!isset($_SESSION['user'])){
       padding-bottom: 20px;
     }
 
+
     body{
       /* background-color:lightgray; */
     }
@@ -187,6 +188,9 @@ if(!isset($_SESSION['user'])){
 
     $rows = mysqli_num_rows($res_cart);
 
+    // echo "<script>console.log('$rows');</script>";
+    $noofproductsincart = $rows;
+
     if (mysqli_num_rows($res_cart) > 0)
     {
       while($row_cart = mysqli_fetch_assoc($res_cart)){
@@ -195,7 +199,7 @@ if(!isset($_SESSION['user'])){
 
 
         echo "<script type='text/javascript'>
-        console.log('$productid_cart');
+        /*console.log('$productid_cart');*/
         </script>";
 
 
@@ -223,6 +227,22 @@ if(!isset($_SESSION['user'])){
 
 ?>
 
+<?php
+
+    $con_for_name = Connect();
+    $sql_for_name = "select custname from customer where custid=".$userid;
+
+    $result_for_name = mysqli_query($con_for_name, $sql_for_name);
+
+    $row_for_name = mysqli_fetch_assoc($result_for_name);
+
+    $username = $row_for_name['custname'];
+
+    // echo "<script>console.log('$username');</script>";
+
+?>
+
+
 <!-- From w3 schools -->
 
 
@@ -237,21 +257,47 @@ if(!isset($_SESSION['user'])){
       
       <a class="navbar-brand" href="product-ui.php">
         <!-- <img src="productimages/temp.jpg" alt="logo" style="width:40%;"> -->
-        Test1
+        MyMall
       </a>
     </div>
 
 
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="index.html">Home</a></li>
-        <li><a href="#">test</a></li>
-        <li><a href="logout.php">Logout</a></li>
-        <li><a href="cart.php">Cart</a></li>
+    <!-- <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">HTML</a></li>
+        <li><a href="#">CSS</a></li>
+        <li><a href="#">JavaScript</a></li>
       </ul>
+    </div> -->
+
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+
+      <!-- <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">HTML</a></li>
+          <li><a href="#">CSS</a></li>
+          <li><a href="#">JavaScript</a></li>
+        </ul>
+      </div> -->
+
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#"><?php echo "Hello, ".$username  ?></a></li>
+        <li><a href="cart.php">Cart<strong><sub style="color:white;"><?php if($noofproductsincart>0) echo "(".$noofproductsincart.")" ?></sub></strong></a></li>
+        <li><a href="orders.php">Orders</a></li>
+        <li><a href="logout.php">Logout</a></li>
+      </ul>
+
     </div>
   </div>
 </nav>
+
+
 
 
 <div class="test">
@@ -290,11 +336,11 @@ if(!isset($_SESSION['user'])){
 
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
+      <!-- <span class="glyphicon glyphicon-chevron-left"></span> -->
       <span class="sr-only">Previous</span>
     </a>
     <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
+      <!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
       <span class="sr-only">Next</span>
     </a>
   </div>
@@ -357,7 +403,7 @@ if(!isset($_SESSION['user'])){
 
 <div class="container" style="width:95%;">
 
-<!-- Display all Food from food table -->
+<!-- Display all products from products table -->
 <?php
 
 // require 'connection.php';

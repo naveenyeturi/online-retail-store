@@ -34,7 +34,7 @@ $userid = $_SESSION['user'];
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
-<link rel="stylesheet" type = "text/css" href ="css/bootstrap.min.css">
+    <link rel="stylesheet" type = "text/css" href ="css/bootstrap.min.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
@@ -49,27 +49,72 @@ $userid = $_SESSION['user'];
 
 	<title>Your Cart</title>
 
-	<style type="text/css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+	
+
+    <style type="text/css">
 
         .body{
             box-sizing: border-box;
             margin:0px;
             padding:0px;
+            background-color: blue;
         }
 
-        /* .navbar{
-            position: fixed;
+        .navbar{
+            /* position: fixed;
             top: 0;
-            width: 100%;
-        } */
+            width: 100%; */
+            margin-bottom: 0;
+            border: none;
+        }
+
+        .container1{
+            /* background-color: gray; */
+            padding: 10px;
+        }
+
+        .cart{
+            width: 50%;
+            /* border: 1px solid black; */
+            padding-left: 30px;
+            /* background-color: white; */
+            
+        }
+
+        .cart .orderbtn{
+            /* background-color: skyblue; */
+            padding: 30px;
+            
+        }
+
+        .cart .orderbtn a{
+
+            background-color: #fb641b;
+            color: white;
+            padding: 15px 30px 15px 30px;
+            border-radius: 4px;
+
+            position: relative;
+            left: 75%;
+
+            font-weight: bold;
+
+            
+        }
+        .cart .orderbtn a:hover{
+            text-decoration: none;
+            background-color: orange;
+        }
 
 
         .cartItem{
-            background-color: skyblue;
+            /* background-color: skyblue; */
             padding: 20px;
             margin:10px;
-
-            width: 50%;
+            width: 100%;
             /* float: left; */
         }
 
@@ -116,40 +161,55 @@ $userid = $_SESSION['user'];
 
 
         .totalDetails{
-            background-color: green;
+            /* background-color: green; */
             /* float: right; */
-            width: 40%;
+            /* background-color: white;
+            border: 1px solid black; */
+
+            width: 45%;
 
             position: fixed;
             top: 70px;
             right: 0;
         }
 
+
+        table, td, tr{
+            /* border: 1px solid black; */
+            border-collapse: collapse;
+            margin-right: 10px;
+
+            font-family: 'Roboto', sans-serif;
+        }
+
+
+
+
 	</style>
 </head>
 <body>
 
-    <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-      <a class="navbar-brand" href="product-ui.php">
-        Test1
-      </a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">test</a></li>
-        <li><a href="#">test</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+    <nav class="navbar navbar-inverse"">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            
+                <a class="navbar-brand" href="product-ui.php">
+                    MyMall
+                </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">test</a></li>
+                    <li><a href="#">test</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 
     <?php
@@ -157,8 +217,8 @@ $userid = $_SESSION['user'];
         require 'connection.php';
         $con = Connect();
 
-        echo "<script type='text/javascript'>console.log('Test');
-            </script>";
+        // echo "<script type='text/javascript'>console.log('Test');
+        //     </script>";
 
         $sql = "select * from cartdetails";
         $result = mysqli_query($con, $sql);
@@ -178,14 +238,14 @@ $userid = $_SESSION['user'];
     ?>
 
     
-    <div class="container">
+    <div class="container1">
 
         <div class="cart">
             <?php
 
                 $total = 0;
 
-                echo "<h1>test</h1>";
+                // echo "<h1>test</h1>";
 
                 while ($row = mysqli_fetch_assoc($result)){
                     $productid = $row["productid"];
@@ -229,20 +289,86 @@ $userid = $_SESSION['user'];
                     echo "</div>";
                 }
             ?>
+
+            <div class="orderbtn">
+                <a href="checkout.php">PLACE ORDER</a>
+            </div>
+
         </div>
 
-
-    <div class="totalDetails">
+    
+        <table class="totalDetails">
             
-            <h2>Price Details</h2>
-            
-            <?php
-                echo "<h2>Price (".$num_rows."items)       ".$total."</h2>";
-            ?>
+            <tr>
+                <td colspan="2">
+                    <h1 style="color: #878787; font-size: 30px;">Price Details</h1>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <?php
+                        echo "<h3>Price (".$num_rows."items) </h3>";
+                    ?>
+                </td>
+                <td>
+                    <?php
+                        echo "<h3>₹".$total."</h3>";
+                    ?>
+                </td>
+            </tr>
 
+            <?php if($total>50000){ ?>
 
+                <tr>
+                    <td>
+                        <h3>Discount</h3>
+                    </td>
+                    <td>
+                        <?php
+                            echo "<h3 style='color: #388e3c;'>-₹".(5*$total/100)."</h3>";
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3 style="font-weight:bold">Total Amount</h3>
+                    </td>
+                    <td>
+                        <?php
+                            echo "<h3 style='font-weight:bold'>₹".($total-(5*$total/100))."</h3>";
+                        ?>
+                    </td>
+                </tr>
 
-    </div>
+                <tr>
+                    <td colspan="2">
+                        <h3 style='color: #388e3c;'>You will save ₹<?php echo "".(5*$total/100) ?> on this order</h3>
+                    </td>
+                </tr>
+
+            <?php 
+            }else{  ?>
+
+                <tr>
+                    <td>
+                        <h3 style="font-weight:bold">Total Amount</h3>
+                    </td>
+                    <td>
+                        <?php
+                            echo "<h3 style='font-weight:bold'>₹".($total)."</h3>";
+                        ?>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <h4>Add ₹<?php echo "".(50000-$total) ?> more to get additional 5% discount</h4>
+                    </td>
+                </tr>
+
+            <?php } ?>
+
+        </table>
 
     </div>
 
