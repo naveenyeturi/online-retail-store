@@ -8,6 +8,8 @@ session_start();
 	//header("location: admin_ui.html");
 	$con = Connect();
 
+	$userid = $_SESSION['user'];
+
 
 	if (!$con) {
 	  die("Connection failed: " . mysqli_connect_error());
@@ -18,7 +20,7 @@ session_start();
 
 	//$sql= "select * from login where email = $email and password = $password";
 
-	$sql = "delete from cartdetails where productid='$id' ";
+	$sql = "delete from cartdetails where productid='$id' and custid='$userid' ";
 
 
 	if(mysqli_query($con, $sql)){

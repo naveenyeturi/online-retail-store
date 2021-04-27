@@ -204,8 +204,8 @@ $userid = $_SESSION['user'];
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">test</a></li>
-                    <li><a href="#">test</a></li>
+                    <!-- <li><a href="#">test</a></li>
+                    <li><a href="#">test</a></li> -->
                 </ul>
             </div>
         </div>
@@ -220,7 +220,7 @@ $userid = $_SESSION['user'];
         // echo "<script type='text/javascript'>console.log('Test');
         //     </script>";
 
-        $sql = "select * from cartdetails";
+        $sql = "select * from cartdetails where custid=".$userid;
         $result = mysqli_query($con, $sql);
 
         $num_rows = mysqli_num_rows($result);
