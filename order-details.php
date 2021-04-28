@@ -6,7 +6,7 @@ session_start();
 
 //echo $_SESSION['user'] ;
 
-$userid = $_SESSION['user'] ;
+$custemail = $_SESSION['user'] ;
 
 if (!isset($_SESSION['user'])) {
         /// your code here

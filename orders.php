@@ -6,7 +6,7 @@ session_start();
 
 //echo $_SESSION['user'] ;
 
-$userid = $_SESSION['user'] ;
+$custemail = $_SESSION['user'] ;
 
 if (!isset($_SESSION['user'])) {
         /// your code here
@@ -20,7 +20,7 @@ if (!isset($_SESSION['user'])) {
 // $conn = mysqli_connect('localhost', 'root', '', 'online_mall');
 $conn = Connect();
 
-$sql = "SELECT * from `orders` where custid = '$userid'";
+$sql = "SELECT * from `orders` where custemail = '$custemail'";
 
 //echo "$sql";
 $result = mysqli_query($conn, $sql);

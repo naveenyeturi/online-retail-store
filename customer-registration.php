@@ -112,17 +112,18 @@ session_start();
             <!-- <label for="name">Name</label> -->
             <input type="text" placeholder="Enter Your Name" name="name" required/>
 
-            <!-- <label for="username">Username</label> -->
-            <input type="text" placeholder="Enter Your UserName" name="username" required/>
-
-            <!-- <label for="password">Password</label> -->
-            <input type="password" placeholder="Enter Your Password" name="password" required/>
+            <!-- <label for="email">Email</label> -->
+            <input type="email" placeholder="Enter Your Email" name="email" required/>
 
             <!-- <label for="phone">Phone</label> -->
             <input type="text" placeholder="Enter Your Phone Number" name="phone" required/>
 
+            <!-- <label for="password">Password</label> -->
+            <input type="password" placeholder="Enter Your Password" name="password" required/>
+
+
             <!-- <label for="city">City</label> -->
-            <input type="text" placeholder="Enter Your City" name="city" required/>
+            <!-- <input type="text" placeholder="Enter Your City" name="city" required/> -->
 
 
             <input class="submit" type="submit" name="submit" value="Register"/>
@@ -159,17 +160,17 @@ session_start();
 
         if(isset($_POST['submit'])){
 
-            $custid = $_POST['username'];
+            $custemail = $_POST['email'];
             $custname = $_POST['name'];
             $custphone = $_POST['phone'];
-            $custaddr = $_POST['city'];
+            // $custaddr = $_POST['city'];
             $custpassword = $_POST['password'];
 
             $con = Connect();
 
 
 
-            $sql = "insert into customer values('$custid', '$custname', '$custphone', '$custaddr', '$custpassword')";
+            $sql = "insert into customer values('$custemail', '$custname', '$custphone', '$custpassword')";
 
             $result = mysqli_query($con, $sql);
 

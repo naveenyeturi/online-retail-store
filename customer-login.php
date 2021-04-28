@@ -15,10 +15,11 @@
 
     if(isset($_POST["login"])){
         
-        $custid = $_POST['custid'];
+        // $custid = $_POST['custid'];
+        $emailorphone = $_POST['emailorphone'];
         $password = $_POST['password'];
 
-        $sql = "SELECT * FROM customer where custid= '$custid' and custpassword='$password'";
+        $sql = "SELECT * FROM customer where custemail= '$emailorphone' or custphone='$emailorphone' and custpassword='$password'";
 
         $rs=mysqli_query($con, $sql);
 
@@ -26,7 +27,11 @@
 
         if(mysqli_num_rows($rs) > 0){
 
-            $_SESSION['user'] = $custid;
+            $row = mysqli_fetch_assoc($rs);
+
+            $custemail = $row['custemail'];
+
+            $_SESSION['user'] = $custemail;
 
             echo "<script type='text/javascript'>
                 window.location='product-ui.php';
@@ -110,7 +115,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Login</title>
 
   <style>
     @import url(https://fonts.googleapis.com/css?family=Roboto:300);
@@ -187,7 +192,7 @@
     <div class="form">
 
       <form class="login-form" action="customer-login.php" method="post">
-        <input type="text" placeholder="username" name="custid" required/>
+        <input type="text" placeholder="Email or Phone" name="emailorphone" required/>
         <input type="password" placeholder="password" name="password" required/>
         <input class="submit" type="submit" value="login" name="login">
         <p class="message">Not registered? <a href="customer-registration.php">Create an account</a></p>

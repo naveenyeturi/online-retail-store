@@ -2,6 +2,8 @@
 
 require 'connection.php';
 
+
+
 session_start();
 
 
@@ -167,9 +169,16 @@ if(!isset($_SESSION['user'])){
      <?php
 
 
+
+
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+
+
     //  require 'connection.php';
 
-     $userid = $_SESSION['user'];
+     $custemail = $_SESSION['user'];
 
      $con_clear = Connect();
 
@@ -177,12 +186,14 @@ if(!isset($_SESSION['user'])){
 
      $res_clear = mysqli_query($con_clear, $sql_clear);
 
+    //  echo "<script>console.log('Test');</script>";
+
 
     // $con_cart = mysqli_connect('localhost', 'root', '', 'online_mall');
 
     $con_cart = Connect();
 
-    $sql_cart= "select * from cartdetails where custid = $userid";
+    $sql_cart= "select * from cartdetails where custemail = '$custemail'";
 
     $res_cart = mysqli_query($con_cart, $sql_cart);
 
@@ -190,6 +201,9 @@ if(!isset($_SESSION['user'])){
 
     // echo "<script>console.log('$rows');</script>";
     $noofproductsincart = $rows;
+
+    
+
 
     if (mysqli_num_rows($res_cart) > 0)
     {
@@ -230,7 +244,7 @@ if(!isset($_SESSION['user'])){
 <?php
 
     $con_for_name = Connect();
-    $sql_for_name = "select custname from customer where custid=".$userid;
+    $sql_for_name = "select custname from customer where custemail='$custemail'";
 
     $result_for_name = mysqli_query($con_for_name, $sql_for_name);
 
@@ -534,9 +548,9 @@ else
 
 
 
-  session_start();
+  // session_start();
 
-  $userid = $_SESSION['user'];
+  $custemail = $_SESSION['user'];
 
 
   $conn = Connect();
@@ -544,7 +558,7 @@ else
 
   if(isset($_GET['add'])){
 
-    $userid = $_SESSION['user'];
+    $custemail = $_SESSION['user'];
     $productid = $_GET['id'];
     $productname=$_GET['hidden_name'];
 	  $productprice=$_GET['hidden_price'];
@@ -552,7 +566,7 @@ else
     $productquantity=1;
 
 
-    // echo "<script>alert('$userid');</script>";
+    // echo "<script>alert('$custemail');</script>";
 
 
     $con = Connect();
@@ -561,7 +575,7 @@ else
 		  die("Connection failed: " . mysqli_connect_error());
 		}
 
-		$sql = "insert into cartdetails values('$productid','$productname','$productprice','$productquantity', '$userid')";
+		$sql = "insert into cartdetails values('$productid','$productname','$productprice','$productquantity', '$custemail')";
 
 		if(mysqli_query($con, $sql)){
 

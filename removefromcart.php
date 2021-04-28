@@ -8,7 +8,7 @@ session_start();
 	//header("location: admin_ui.html");
 	$con = Connect();
 
-	$userid = $_SESSION['user'];
+	$custemail = $_SESSION['user'];
 
 
 	if (!$con) {
@@ -20,7 +20,7 @@ session_start();
 
 	//$sql= "select * from login where email = $email and password = $password";
 
-	$sql = "delete from cartdetails where productid='$id' and custid='$userid' ";
+	$sql = "delete from cartdetails where productid='$id' and custemail='$custemail' ";
 
 
 	if(mysqli_query($con, $sql)){

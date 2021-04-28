@@ -14,11 +14,11 @@ if (!isset($_SESSION['user'])) {
 		</script>";
 }
 
-$userid = $_SESSION['user'];
+$custemail = $_SESSION['user'];
 
 // $conn = Connect();
 
-// $sql = "SELECT productid, productname, productprice, productquantity from `cartdetails` where custid = '$userid'";
+// $sql = "SELECT productid, productname, productprice, productquantity from `cartdetails` where custemail = '$custemail'";
 
 // //echo "$sql";
 // $result = mysqli_query($conn, $sql);
@@ -214,13 +214,19 @@ $userid = $_SESSION['user'];
 
     <?php
 
+
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+
+
         require 'connection.php';
         $con = Connect();
 
         // echo "<script type='text/javascript'>console.log('Test');
         //     </script>";
 
-        $sql = "select * from cartdetails where custid=".$userid;
+        $sql = "select * from cartdetails where custemail='$custemail'";
         $result = mysqli_query($con, $sql);
 
         $num_rows = mysqli_num_rows($result);
