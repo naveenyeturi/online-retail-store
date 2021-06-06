@@ -240,7 +240,7 @@ if(!isset($_SESSION['user'])){
     
 
 
-    if ($res_cart->rowCount() > 0)
+    if ($res_cart->rowCount()/*mysqli_num_rows($res_cart)*/ > 0)
     {
       while($row_cart = $res_cart->fetch(PDO::FETCH_ASSOC)/*$row_cart = mysqli_fetch_assoc($res_cart)*/){
 
@@ -531,7 +531,7 @@ if ($result->rowCount()/*mysqli_num_rows($result)*/ > 0)
 {
   $count=0;
 
-  while($row = $result->fetch(PDO::FETCH_ASSOC)/*mysqli_fetch_assoc($result)*/){
+  while($row = $result->fetch(PDO::FETCH_ASSOC)/*$row=mysqli_fetch_assoc($result)*/){
     if ($count == 0)
       echo "<div class='row'>";
 
