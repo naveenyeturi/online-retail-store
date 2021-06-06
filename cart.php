@@ -182,6 +182,127 @@ $custemail = $_SESSION['user'];
             font-family: 'Roboto', sans-serif;
         }
 
+        @media only screen and (max-width: 450px){
+
+
+            .container1{
+                /* background-color: gray; */
+                margin:0;
+                padding:0;
+                /* padding: 10px; */
+            }
+
+            .cart{
+                width: 50%;
+                /* border: 1px solid black; */
+                padding-left: 30px;
+                /* background-color: white; */
+                
+            }
+
+            .cart .orderbtn{
+                /* background-color: skyblue; */
+                /* padding: 30px; */
+                width: 250px;
+                
+            }
+
+            .cart .orderbtn a{
+
+                background-color: #fb641b;
+                color: white;
+                /* padding: 15px 30px 15px 30px; */
+                border-radius: 4px;
+
+                position: relative;
+                left: 0%;
+
+                font-weight: bold;
+
+                
+            }
+            .cart .orderbtn a:hover{
+                text-decoration: none;
+                background-color: orange;
+            }
+
+
+            .cartItem{
+                /* background-color: skyblue; */
+                padding: 20px;
+                margin:10px;
+                width: 100%;
+                /* float: left; */
+            }
+
+            .cartItem .cartedit{
+                display: flex;
+                flex-direction:column;
+            }
+
+            .cartedit input[type=text]{
+                text-align: center;
+                font-size: 1.1em;
+                width: 35px;
+                font-weight: bold;
+            }
+
+            .cartedit input[type=submit]{
+                border : 1px solid transparent;
+                border-radius: 50%;
+            }
+
+            .cartedit a{
+                margin-left: 20px;
+                position: relative;
+                bottom: 5px;
+
+                text-decoration: none;
+
+            }
+
+            .cartItemImageDetails img{
+                height:150px;
+                width: 80px;
+                /* margin-right:20px; */
+
+            }
+
+            .cartItemImageDetails .cartItemDetails h3{
+                margin-top:20px;
+            }
+
+            .cartItemImageDetails{
+
+                display: flex;
+                flex-direction: column;
+
+            }
+
+
+            .totalDetails{
+                /* background-color: green; */
+                /* float: right; */
+                /* background-color: white;
+                border: 1px solid black; */
+
+                /* width: 45%;
+
+                position: fixed;
+                top: 70px;
+                right: 0; */
+            }
+
+
+            table, td, tr{
+                /* border: 1px solid black; */
+                border-collapse: collapse;
+                margin-right: 10px;
+
+                font-family: 'Roboto', sans-serif;
+            }
+
+        }
 
 
 
@@ -226,10 +347,12 @@ error_reporting(-1);
         // echo "<script type='text/javascript'>console.log('Test');
         //     </script>";
 
-        $sql = "select * from cartdetails where custemail='$custemail'";
-        $result = mysqli_query($con, $sql);
+        $sql = "select * from cartdetails where custemail='$custemail' order by productid";
+        // $result = mysqli_query($con, $sql);
+        $result = $con->query($sql);
 
-        $num_rows = mysqli_num_rows($result);
+        // $num_rows = mysqli_num_rows($result);
+        $num_rows = $result->rowCount();
 
         if($num_rows==0){
 					
@@ -253,7 +376,7 @@ error_reporting(-1);
 
                 // echo "<h1>test</h1>";
 
-                while ($row = mysqli_fetch_assoc($result)){
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)/*$row = mysqli_fetch_assoc($result)*/){
                     $productid = $row["productid"];
                     $productname = $row["productname"];
                     $productprice = $row["productprice"];
@@ -263,9 +386,11 @@ error_reporting(-1);
 
 
                     $sqlforimage = "select * from product where productid='$productid'";
-                    $resultforimage = mysqli_query($con, $sqlforimage);
+                    // $resultforimage = mysqli_query($con, $sqlforimage);
+                    $resultforimage = $con->query($sqlforimage);
 
-                    $rowforimage = mysqli_fetch_assoc($resultforimage);
+                    // $rowforimage = mysqli_fetch_assoc($resultforimage);
+                    $rowforimage = $resultforimage->fetch(PDO::FETCH_ASSOC);
 
                     $productimage = $rowforimage["productimage"];
                     $productdesc = $rowforimage["productdesc"];
@@ -395,7 +520,8 @@ error_reporting(-1);
 
             $sql1 = "update cartdetails set productquantity=".($cartValue+1)." where productid='$productid'";
 
-            $result = mysqli_query($con1, $sql1);
+            // $result = mysqli_query($con1, $sql1);
+            $result = $con1->query($sql1);
 
             if($result){
                 echo "<script>window.location='cart.php';
@@ -419,7 +545,8 @@ error_reporting(-1);
 
             $sql2 = "update cartdetails set productquantity=".($cartValue-1)." where productid='$productid'";
 
-            $result1 = mysqli_query($con2, $sql2);
+            // $result1 = mysqli_query($con2, $sql2);
+            $result1 = $con2->query($sql2);
 
             if($result1){
                 echo "<script>window.location='cart.php';

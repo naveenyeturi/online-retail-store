@@ -23,7 +23,7 @@ session_start();
 	$sql = "delete from cartdetails where productid='$id' and custemail='$custemail' ";
 
 
-	if(mysqli_query($con, $sql)){
+	if($con->query($sql)/*mysqli_query($con, $sql)*/){
 		/*echo '<script>alert("Successful")</script>';
 		header("Location: cart.php");
 		exit;*/

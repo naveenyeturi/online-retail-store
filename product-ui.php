@@ -1,10 +1,19 @@
 <?php 
 
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+
 require 'connection.php';
 
 
-
 session_start();
+
+// $temp = $_SESSION['user'];
+
+// echo "<script>console.log('$temp');</script>";
+
+
 
 
 if(!isset($_SESSION['user'])){
@@ -157,6 +166,12 @@ if(!isset($_SESSION['user'])){
        background-color:yellow;
      }
 
+     @media only screen and (max-width: 480px){
+       .col-md-3{
+         min-height: 400px;
+       }
+     }
+
 
     </style>
   </head>
@@ -170,12 +185,6 @@ if(!isset($_SESSION['user'])){
 
 
 
-
-ini_set('display_startup_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(-1);
-
-
     //  require 'connection.php';
 
      $custemail = $_SESSION['user'];
@@ -184,7 +193,8 @@ error_reporting(-1);
 
      $sql_clear = "update product set addedtocart='0'";
 
-     $res_clear = mysqli_query($con_clear, $sql_clear);
+    //  $res_clear = mysqli_query($con_clear, $sql_clear);
+    $res_clear = $con_clear->query($sql_clear);
 
     //  echo "<script>console.log('Test');</script>";
 
@@ -195,9 +205,11 @@ error_reporting(-1);
 
     $sql_cart= "select * from cartdetails where custemail = '$custemail'";
 
-    $res_cart = mysqli_query($con_cart, $sql_cart);
+    // $res_cart = mysqli_query($con_cart, $sql_cart);
+    $res_cart = $con_clear->query($sql_cart);
 
-    $rows = mysqli_num_rows($res_cart);
+    // $rows = mysqli_num_rows($res_cart);
+    $rows = $res_cart->rowCount();
 
     // echo "<script>console.log('$rows');</script>";
     $noofproductsincart = $rows;
@@ -205,9 +217,11 @@ error_reporting(-1);
     
 
 
-    if (mysqli_num_rows($res_cart) > 0)
+    if ($res_cart->rowCount() > 0)
     {
-      while($row_cart = mysqli_fetch_assoc($res_cart)){
+      while($row_cart = $res_cart->fetch(PDO::FETCH_ASSOC)/*$row_cart = mysqli_fetch_assoc($res_cart)*/){
+
+        
 
         $productid_cart = $row_cart['productid'];
 
@@ -227,7 +241,7 @@ error_reporting(-1);
     
 
 
-        if(mysqli_query($con3, $sql3)){
+        if($con3->query($sql3)/*mysqli_query($con3, $sql3)*/){
 
         }else{
       
@@ -246,10 +260,12 @@ error_reporting(-1);
     $con_for_name = Connect();
     $sql_for_name = "select custname from customer where custemail='$custemail'";
 
-    $result_for_name = mysqli_query($con_for_name, $sql_for_name);
+    // $result_for_name = mysqli_query($con_for_name, $sql_for_name);
+    $result_for_name = $con_for_name->query($sql_for_name);
 
-    $row_for_name = mysqli_fetch_assoc($result_for_name);
-
+    // $row_for_name = mysqli_fetch_assoc($result_for_name);
+    $row_for_name = $result_for_name->fetch(PDO::FETCH_ASSOC);
+    
     $username = $row_for_name['custname'];
 
     // echo "<script>console.log('$username');</script>";
@@ -304,7 +320,7 @@ error_reporting(-1);
         <li class="active"><a href="#"><?php echo "Hello, ".$username  ?></a></li>
         <li><a href="cart.php">Cart<strong><sub style="color:white;"><?php if($noofproductsincart>0) echo "(".$noofproductsincart.")" ?></sub></strong></a></li>
         <li><a href="orders.php">Orders</a></li>
-        <li><a href="logout.php">Logout</a></li>
+        <li><a href="#" onclick='logout()'>Logout</a></li>
       </ul>
 
     </div>
@@ -367,7 +383,7 @@ error_reporting(-1);
       
    <div class="search">
       <form method="post" action="product-ui.php">
-        <input class="searchbar" type="search" name="productname" placeholder="Search for products..." required>
+        <input id="searchbar" class="searchbar" type="search" name="productname" placeholder="Search for products..." required>
         <!-- <button type="submit" name="search" value="search"><i class="fa fa-search"></i></button> -->
 
         <button type="submit" name="search" value="search"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -423,16 +439,16 @@ error_reporting(-1);
 // require 'connection.php';
 $conn = Connect();
 
-$sql = "SELECT * FROM product";
+$sql = "SELECT * FROM product order by productid";
 
 
 if(!isset($_GET['category'])){
   // $category = true;
-  $sql = "SELECT * FROM product";
+  $sql = "SELECT * FROM product order by productid";
 
 }elseif ($_GET['category'] == "") {
   # code...
-  $sql = "SELECT * FROM product";
+  $sql = "SELECT * FROM product order by productid";
 }else{
 
   $category = $_GET['category'];
@@ -441,15 +457,22 @@ if(!isset($_GET['category'])){
 
 if(isset($_POST['search'])){
   if(!isset($_POST['productname'])){
-    $sql = "SELECT * FROM product";
+    $sql = "SELECT * FROM product order by productid";
 
   }elseif ($_POST['productname'] == "" || $_POST['productname'] == "all") {
     # code...
-    $sql = "SELECT * FROM product";
+    $sql = "SELECT * FROM product order by productid";
   }else{
 
     $productname = $_POST['productname'];
-    $sql = "SELECT * FROM product where productname like '%$productname%'";
+    $sql = "SELECT * FROM product where Lower(productname) like Lower('%$productname%')";
+
+    echo "
+    <script>
+      document.getElementById('searchbar').value = '$productname';
+    </script>
+    ";
+
   }
 }
 
@@ -457,13 +480,14 @@ if(isset($_POST['search'])){
 
 
 // $sql = "SELECT * FROM product where category='$category'";
-$result = mysqli_query($conn, $sql);
+// $result = mysqli_query($conn, $sql);
+$result = $conn->query($sql);
 
-if (mysqli_num_rows($result) > 0)
+if ($result->rowCount()/*mysqli_num_rows($result)*/ > 0)
 {
   $count=0;
 
-  while($row = mysqli_fetch_assoc($result)){
+  while($row = $result->fetch(PDO::FETCH_ASSOC)/*mysqli_fetch_assoc($result)*/){
     if ($count == 0)
       echo "<div class='row'>";
 
@@ -577,7 +601,7 @@ else
 
 		$sql = "insert into cartdetails values('$productid','$productname','$productprice','$productquantity', '$custemail')";
 
-		if(mysqli_query($con, $sql)){
+		if($con->query($sql)/*mysqli_query($con, $sql)*/){
 
 
       echo "<script type='text/javascript'>
@@ -596,6 +620,42 @@ else
 	}
 
 ?>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-analytics.js"></script>
+  
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-storage.js"></script>
+
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyCHhyRQHmEwF9HQNb3iaM-SXhYGp-Ag31Y",
+      authDomain: "mymall-naveen.firebaseapp.com",
+      projectId: "mymall-naveen",
+      storageBucket: "mymall-naveen.appspot.com",
+      messagingSenderId: "1077253083611",
+      appId: "1:1077253083611:web:3cd5f1774a68670d3f97fe",
+      measurementId: "G-4BQC515TGN"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+      // Initialize Firebase
+    // firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
+  </script>
+
+  
+<script src="js/index1.js"></script>
 
 
 <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

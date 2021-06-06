@@ -1,5 +1,10 @@
 <?php
 
+
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+
     session_start();
 
     if(isset($_SESSION['user'])){
@@ -16,18 +21,20 @@
     if(isset($_POST["login"])){
         
         // $custid = $_POST['custid'];
-        $emailorphone = $_POST['emailorphone'];
+        $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $sql = "SELECT * FROM customer where custemail= '$emailorphone' or custphone='$emailorphone' and custpassword='$password'";
+        $sql = "SELECT * FROM customer where custemail= '$email' or custphone='$email' and custpassword='$password'";
 
-        $rs=mysqli_query($con, $sql);
+        // $rs=mysqli_query($con, $sql);
+        $rs = $con->query($sql);
 
         // echo "rows = ".mysqli_num_rows($rs);
 
-        if(mysqli_num_rows($rs) > 0){
+        if($rs->rowCount()/*mysqli_num_rows($rs)*/ > 0){
 
-            $row = mysqli_fetch_assoc($rs);
+            // $row = mysqli_fetch_assoc($rs);
+            $row = $rs->fetch(PDO::FETCH_ASSOC);
 
             $custemail = $row['custemail'];
 
@@ -48,11 +55,11 @@
                     </script>';
 
             //header("location: customer_login.html");*/
-            echo "<script type='text/javascript'>alert('Email and Password doesnot match');
-                window.location='customer-login.php';
-                </script>";
+            // echo "<script type='text/javascript'>alert('Email and Password doesnot match');
+            //     window.location='customer-login.php';
+            //     </script>";
         }
-        mysqli_close($con);
+        $con->close();
     }
 
 ?>
@@ -116,6 +123,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
+
+  
+  
 
   <style>
     @import url(https://fonts.googleapis.com/css?family=Roboto:300);
@@ -191,14 +206,82 @@
   <div class="login-page">
     <div class="form">
 
-      <form class="login-form" action="customer-login.php" method="post">
-        <input type="text" placeholder="Email or Phone" name="emailorphone" required/>
-        <input type="password" placeholder="password" name="password" required/>
+      <form1 class="login-form">
+        <input type="text" placeholder="Email" name="emailorphone" id="emailorphone" required/>
+        <input type="password" placeholder="password" name="password" id="password" required/>
+        <!-- <input class="submit" type="submit" value="login" name="login"> -->
+        <button class="submit" onclick="validate()">login</button>
+        <p class="message">Not registered? <a href="customer-registration.php">Create an account</a></p>
+      </form1>
+    </div>
+  </div>
+
+
+
+
+<!-- trying postgresql -->
+
+
+  <!-- <div class="login-page(temp)">
+    <div class="form(temp)">
+
+      <form class="login-form1" action="customer-login-postgres.php" method="get">
+        <input type="text" placeholder="Email or Phone" name="email" id="email" required/>
+        <input type="password" placeholder="password" name="password" id="password" required/>
         <input class="submit" type="submit" value="login" name="login">
+        <button class="submit" onclick="validate()">login</button>
         <p class="message">Not registered? <a href="customer-registration.php">Create an account</a></p>
       </form>
     </div>
-  </div>
+  </div> -->
+
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-analytics.js"></script>
+
+  
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-storage.js"></script>
+
+  
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyCHhyRQHmEwF9HQNb3iaM-SXhYGp-Ag31Y",
+      authDomain: "mymall-naveen.firebaseapp.com",
+      projectId: "mymall-naveen",
+      storageBucket: "mymall-naveen.appspot.com",
+      messagingSenderId: "1077253083611",
+      appId: "1:1077253083611:web:3cd5f1774a68670d3f97fe",
+      measurementId: "G-4BQC515TGN"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+      // Initialize Firebase
+    // firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
+  </script>
+
+<script src="js/index.js"></script>
+
+<script>
+  //console.log('hmmmm...');
+</script>
+
+
+
+
+
   
 </body>
 </html>

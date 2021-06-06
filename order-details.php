@@ -4,6 +4,8 @@ require 'connection.php';
 
 session_start();
 
+
+
 //echo $_SESSION['user'] ;
 
 $custemail = $_SESSION['user'] ;
@@ -31,17 +33,28 @@ if (!isset($_GET['id'])) {
 
 $orderid = $_GET['id'];
 
-$sql_orderdetails = "SELECT * from `orderdetails` where orderid = '$orderid'";
-$sql_orders = "SELECT * from `orders` where orderid = '$orderid'";
+$sql_orderdetails = "SELECT * from orderdetails where orderid = '$orderid'";
+$sql_orders = "SELECT * from orders where orderid = '$orderid'";
 
 //echo "$sql_orderdetails";
-$result_orderdetails = mysqli_query($con, $sql_orderdetails);
-$result_orders = mysqli_query($con, $sql_orders);
-$row_orders = mysqli_fetch_assoc($result_orders);
+// $result_orderdetails = mysqli_query($con, $sql_orderdetails);
+$result_orderdetails = $con->query($sql_orderdetails);
 
-$num_rows_orderdetails = mysqli_num_rows($result_orderdetails);
-$num_rows_orders = mysqli_num_rows($result_orders);
+// $result_orders = mysqli_query($con, $sql_orders);
+$result_orders = $con->query($sql_orders);
 
+// $row_orders = mysqli_fetch_assoc($result_orders);
+$row_orders = $result_orders->fetch(PDO::FETCH_ASSOC);
+
+
+// $num_rows_orderdetails = mysqli_num_rows($result_orderdetails);
+$num_rows_orderdetails = $result_orderdetails->rowCount();
+
+
+// $num_rows_orders = mysqli_num_rows($result_orders);
+$num_rows_orders = $result_orders->rowCount();
+
+// echo "<script>console.log('orderid= $orderid , num_rows_orderdetails=$num_rows_orderdetails');</script>";
 
 ?>
 
@@ -57,7 +70,7 @@ $num_rows_orders = mysqli_num_rows($result_orders);
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
-    <title>Document</title>
+    <title>Order Details</title>
 
 
     <style>
@@ -122,6 +135,82 @@ $num_rows_orders = mysqli_num_rows($result_orders);
 		}
 
 
+        @media only screen and (max-width: 450px){
+            .orderItems{
+                padding:0px;
+
+                margin-top: 10px;
+                
+                
+            }
+
+            .orderItem{
+
+                padding: 0px;
+
+                
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: nowrap;
+
+                align-items: center;
+
+                /* background-color: skyblue; */
+                margin: 0px;
+            }
+
+            .orderItem img{
+                /* margin-top: 40px; */
+                width: 70px;
+                max-height: 200px;
+
+            }
+
+            .orderItem .itemDetails{
+                width: 100px;
+            }
+            .orderItem .itemDetails h2, h3{
+                font-size: 90%;
+            }
+
+            .orderItem .itemPrice{
+                width: 50px;
+
+            }
+            .orderItem .itemPrice h2{
+                
+                font-size: 80%;
+            }
+
+            .orderItem .itemDeliveryDate{
+
+                width: 100px;
+
+            }
+            
+
+            .orderItem .itemDeliveryDate h2, h4{
+                font-size: 80%;
+            }
+
+            #myButton {
+                margin-top: 20px;
+                cursor: pointer; 
+                border: 1px solid #3498db; 
+                background-color: transparent; 
+                padding: 16px 20px;
+                width: 200px;
+                color: black; 
+                /*font-size: 1.5em; */
+                box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+                position: absolute;
+                left: 10px;
+                
+                /*top: 50px;*/
+            }
+        }
+
+
     </style>
 
 
@@ -162,19 +251,24 @@ $num_rows_orders = mysqli_num_rows($result_orders);
     <?php
 
 
-        while($row_orderdetails = mysqli_fetch_assoc($result_orderdetails)){
+        while($row_orderdetails = $result_orderdetails->fetch(PDO::FETCH_ASSOC)/*$row_orderdetails = mysqli_fetch_assoc($result_orderdetails)*/){
             
+            // echo "<script>console.log('test');</script>";
+
             $productid = $row_orderdetails['productid'];
             
             // echo "<script>console.log('$productid');</script>";
 
             $sql_product = "select * from product where productid='$productid'";
             
-            $result_product = mysqli_query($con, $sql_product);
+            // $result_product = mysqli_query($con, $sql_product);
+            $result_product = $con->query($sql_product);
             
-            $row_product = mysqli_fetch_assoc($result_product);
+            // $row_product = mysqli_fetch_assoc($result_product);
+            $row_product = $result_product->fetch(PDO::FETCH_ASSOC);
 
-            $num_rows_products = mysqli_num_rows($result_product);
+            // $num_rows_products = mysqli_num_rows($result_product);
+            $num_rows_products = $result_product->rowCount();
 
 
             echo '<div class="orderItem">';
@@ -216,7 +310,6 @@ $num_rows_orders = mysqli_num_rows($result_orders);
 
 
 <button id="myButton" class="myButton" onclick="location.href = 'orders.php'">Go Back</button>
-
 
 
 

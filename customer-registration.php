@@ -19,6 +19,12 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script src="js/index2.js"></script>
+
+
     <title>Register</title>
     <style>
         @import url(https://fonts.googleapis.com/css?family=Roboto:300);
@@ -106,29 +112,29 @@ session_start();
 
     <div class="registration-page">
         <div class="form">
-        <form class="register-form" action="customer-registration.php" method="post">
+        <form1 class="register-form" id="register-form" method="post">
 
 
             <!-- <label for="name">Name</label> -->
-            <input type="text" placeholder="Enter Your Name" name="name" required/>
+            <input type="text" placeholder="Enter Your Name" name="name" id="name" required/>
 
             <!-- <label for="email">Email</label> -->
-            <input type="email" placeholder="Enter Your Email" name="email" required/>
+            <input type="email" placeholder="Enter Your Email" name="emailorphone" id="emailorphone" required/>
 
             <!-- <label for="phone">Phone</label> -->
-            <input type="text" placeholder="Enter Your Phone Number" name="phone" required/>
+            <input type="text" placeholder="Enter Your Phone Number" name="phone" id="phone" required/>
 
             <!-- <label for="password">Password</label> -->
-            <input type="password" placeholder="Enter Your Password" name="password" required/>
+            <input type="password" placeholder="Enter Your Password" name="password" id="password" required/>
 
 
             <!-- <label for="city">City</label> -->
             <!-- <input type="text" placeholder="Enter Your City" name="city" required/> -->
 
 
-            <input class="submit" type="submit" name="submit" value="Register"/>
+            <input onclick="register()" class="submit" type="submit" name="submit" value="Register"/>
             <p class="message">Already registered? <a href="customer-login.php">Sign In</a></p>
-        </form>
+        </form1>
 
         </div>
     </div>
@@ -172,23 +178,73 @@ session_start();
 
             $sql = "insert into customer values('$custemail', '$custname', '$custphone', '$custpassword')";
 
-            $result = mysqli_query($con, $sql);
+            // $result = mysqli_query($con, $sql);
+            $result = $con->query($sql);
 
-            if(!$result){
-                echo "<script type='text/javascript'>alert('Error');
-                window.location='customer-registration.php';
-                </script>";
-            }else{
-                echo "<script type='text/javascript'>
-                alert('Registration successful. Please Login to continue');
-                window.location='customer-login.php';
-                </script>";
-            }
+            // if(!$result){
+            //     echo "<script type='text/javascript'>alert('Error');
+            //     window.location='customer-registration.php';
+            //     </script>";
+            // }else{
+            //     echo "<script type='text/javascript'>
+            //     alert('Registration successful. Please Login to continue');
+            //     window.location='customer-login.php';
+            //     </script>";
+            // }
 
 
         }
 
     ?>
+
+
+
+
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-analytics.js"></script>
+
+  
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-storage.js"></script>
+
+  
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyCHhyRQHmEwF9HQNb3iaM-SXhYGp-Ag31Y",
+      authDomain: "mymall-naveen.firebaseapp.com",
+      projectId: "mymall-naveen",
+      storageBucket: "mymall-naveen.appspot.com",
+      messagingSenderId: "1077253083611",
+      appId: "1:1077253083611:web:3cd5f1774a68670d3f97fe",
+      measurementId: "G-4BQC515TGN"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+      // Initialize Firebase
+    // firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
+  </script>
+
+<script src="js/index2.js"></script>
+
+
+
+
+
+
+    
 
 
 </body>
