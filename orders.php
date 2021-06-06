@@ -57,16 +57,17 @@ if($num_rows==0){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orders</title>
-    <link rel="stylesheet" type = "text/css" href ="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <style>
-        /* .glyphicon { margin-right:5px; }
+    /* .glyphicon { margin-right:5px; }
         .thumbnail
         {
             margin-bottom: 20px;
@@ -129,11 +130,11 @@ if($num_rows==0){
             width: 50px;
         } */
 
-        body {
+    body {
         /* margin: 40px; */
-        }
+    }
 
-        .wrapper {
+    .wrapper {
         display: grid;
         grid-template-rows: 150px 150px;
         grid-template-columns: 150px 150px 150px 150px 150px;
@@ -145,48 +146,48 @@ if($num_rows==0){
 
         padding: 50px;
         background-color: lightgray;
-        }
+    }
 
-        .box {
-            /* margin: 20px; */
+    .box {
+        /* margin: 20px; */
         background-color: #444;
         color: #fff;
         border-radius: 5px;
         /*   padding: 20px; */
         /* font-size: 150%; */
         cursor: pointer;
-        
+
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
 
         opacity: 0.8;
-        }
+    }
 
-        .box:hover{
-            opacity: 1.0;
-            transform: scale(1.1);
-        }
+    .box:hover {
+        opacity: 1.0;
+        transform: scale(1.1);
+    }
 
-        #myButton {
-			margin-top: 20px;
-			cursor: pointer; 
-            border: 1px solid #3498db; 
-            background-color: transparent; 
-            padding: 16px 20px;
-            width: 10%;
-            color: black; 
-            /*font-size: 1.5em; */
-            box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
-            position: absolute;
-            left: 10px;
-            
-            /*top: 50px;*/
-		}
+    #myButton {
+        margin-top: 20px;
+        cursor: pointer;
+        border: 1px solid #3498db;
+        background-color: transparent;
+        padding: 16px 20px;
+        width: 10%;
+        color: black;
+        /*font-size: 1.5em; */
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 10px;
 
-        @media only screen and (max-width: 480px){
-            .wrapper {
+        /*top: 50px;*/
+    }
+
+    @media only screen and (max-width: 480px) {
+        .wrapper {
             display: grid;
             grid-template-rows: 150px 150px;
             grid-template-columns: 150px 150px;
@@ -198,76 +199,76 @@ if($num_rows==0){
 
             padding: 10px;
             background-color: lightgray;
-            }
+        }
 
-            .box {
-                /* margin: 20px; */
+        .box {
+            /* margin: 20px; */
             background-color: #444;
             color: #fff;
             border-radius: 5px;
             /*   padding: 20px; */
             /* font-size: 150%; */
             cursor: pointer;
-            
+
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
 
             opacity: 0.8;
-            }
-
-            .box:hover{
-                opacity: 1.0;
-                transform: scale(1.1);
-            }
-
-            #myButton {
-                margin-top: 20px;
-                cursor: pointer; 
-                border: 1px solid #3498db; 
-                background-color: transparent; 
-                padding: 16px 20px;
-                width: 100px;
-                color: black; 
-                /*font-size: 1.5em; */
-                box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
-                position: absolute;
-                left: 10px;
-                
-                /*top: 50px;*/
-            }
-
         }
 
+        .box:hover {
+            opacity: 1.0;
+            transform: scale(1.1);
+        }
+
+        #myButton {
+            margin-top: 20px;
+            cursor: pointer;
+            border: 1px solid #3498db;
+            background-color: transparent;
+            padding: 16px 20px;
+            width: 100px;
+            color: black;
+            /*font-size: 1.5em; */
+            box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+            position: absolute;
+            left: 10px;
+
+            /*top: 50px;*/
+        }
+
+    }
     </style>
 </head>
+
 <body>
-<nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
-		<div class="container-fluid">
-			<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			
-			<a class="navbar-brand" href="product-ui.php">
-				<!-- <img src="productimages/temp.jpg" alt="logo" style="width:40%;"> -->
-				MyMall
-			</a>
-			</div>
+    <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="product-ui.php">
+                    <!-- <img src="productimages/temp.jpg" alt="logo" style="width:40%;"> -->
+                    MyMall
+                </a>
+            </div>
 
 
-			<div class="collapse navbar-collapse" id="myNavbar">
+            <div class="collapse navbar-collapse" id="myNavbar">
 
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="logout.php">Logout</a></li>
-			</ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" onclick='logout()'>Logout</a></li>
+                </ul>
 
-			</div>
-		</div>
-	</nav>
+            </div>
+        </div>
+    </nav>
     <div>
         <div class="container">
 
@@ -307,25 +308,56 @@ if($num_rows==0){
                     </div>
                     ';
                 }
-                ?>                
+                ?>
             </div>
         </div>
     </div>
 
     <button id="myButton" class="myButton" onclick="location.href = 'product-ui.php'">Go Back</button>
 
-    <script>  
+    <script>
+    function boxClick(orderid) {
 
-
-        function boxClick(orderid){
-
-            // console.log(orderid);
-            window.location.href = "order-details.php?id="+orderid;
-        }
-
-
-        
-      
+        // console.log(orderid);
+        window.location.href = "order-details.php?id=" + orderid;
+    }
     </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-analytics.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-storage.js"></script>
+
+
+    <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyCHhyRQHmEwF9HQNb3iaM-SXhYGp-Ag31Y",
+        authDomain: "mymall-naveen.firebaseapp.com",
+        projectId: "mymall-naveen",
+        storageBucket: "mymall-naveen.appspot.com",
+        messagingSenderId: "1077253083611",
+        appId: "1:1077253083611:web:3cd5f1774a68670d3f97fe",
+        measurementId: "G-4BQC515TGN"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    // Initialize Firebase
+    // firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
+    </script>
+
+
+    <script src="js/logout.js"></script>
 </body>
+
 </html>

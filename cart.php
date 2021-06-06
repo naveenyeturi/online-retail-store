@@ -29,12 +29,13 @@ $custemail = $_SESSION['user'];
 
 <!DOCTYPE html>
 <html>
+
 <head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
-    <link rel="stylesheet" type = "text/css" href ="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
@@ -47,95 +48,216 @@ $custemail = $_SESSION['user'];
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
-	<title>Your Cart</title>
+    <title>Your Cart</title>
 
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
-	
+
 
     <style type="text/css">
+    .body {
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+        background-color: blue;
+    }
 
-        .body{
-            box-sizing: border-box;
-            margin:0px;
-            padding:0px;
-            background-color: blue;
-        }
-
-        .navbar{
-            /* position: fixed;
+    .navbar {
+        /* position: fixed;
             top: 0;
             width: 100%; */
-            margin-bottom: 0;
-            border: none;
-        }
+        margin-bottom: 0;
+        border: none;
+    }
 
-        .container1{
+    .container1 {
+        /* background-color: gray; */
+        padding: 10px;
+    }
+
+    .cart {
+        width: 50%;
+        /* border: 1px solid black; */
+        padding-left: 30px;
+        /* background-color: white; */
+
+    }
+
+    .cart .orderbtn {
+        /* background-color: skyblue; */
+        padding: 30px;
+
+    }
+
+    .cart .orderbtn a {
+
+        background-color: #fb641b;
+        color: white;
+        padding: 15px 30px 15px 30px;
+        border-radius: 4px;
+
+        position: relative;
+        left: 75%;
+
+        font-weight: bold;
+
+
+    }
+
+    .cart .orderbtn a:hover {
+        text-decoration: none;
+        background-color: orange;
+    }
+
+
+    .cartItem {
+        /* background-color: skyblue; */
+        padding: 20px;
+        margin: 10px;
+        width: 100%;
+        /* float: left; */
+    }
+
+    .cartItem .cartedit {
+        display: flex;
+    }
+
+    .cartedit input[type=text] {
+        text-align: center;
+        font-size: 1.1em;
+        width: 35px;
+        font-weight: bold;
+    }
+
+    .cartedit input[type=submit] {
+        border: 1px solid transparent;
+        border-radius: 50%;
+    }
+
+    .cartedit a {
+        margin-left: 40px;
+        position: relative;
+        bottom: 5px;
+
+        text-decoration: none;
+
+    }
+
+    .cartItemImageDetails img {
+        width: 100px;
+        margin-right: 20px;
+
+    }
+
+    .cartItemImageDetails .cartItemDetails h3 {
+        margin-top: 20px;
+    }
+
+    .cartItemImageDetails {
+
+        display: flex;
+
+    }
+
+
+    .totalDetails {
+        /* background-color: green; */
+        /* float: right; */
+        /* background-color: white;
+            border: 1px solid black; */
+
+        width: 45%;
+
+        position: fixed;
+        top: 70px;
+        right: 0;
+    }
+
+
+    table,
+    td,
+    tr {
+        /* border: 1px solid black; */
+        border-collapse: collapse;
+        margin-right: 10px;
+
+        font-family: 'Roboto', sans-serif;
+    }
+
+    @media only screen and (max-width: 450px) {
+
+
+        .container1 {
             /* background-color: gray; */
-            padding: 10px;
+            margin: 0;
+            padding: 0;
+            /* padding: 10px; */
         }
 
-        .cart{
+        .cart {
             width: 50%;
             /* border: 1px solid black; */
             padding-left: 30px;
             /* background-color: white; */
-            
+
         }
 
-        .cart .orderbtn{
+        .cart .orderbtn {
             /* background-color: skyblue; */
-            padding: 30px;
-            
+            /* padding: 30px; */
+            width: 250px;
+
         }
 
-        .cart .orderbtn a{
+        .cart .orderbtn a {
 
             background-color: #fb641b;
             color: white;
-            padding: 15px 30px 15px 30px;
+            /* padding: 15px 30px 15px 30px; */
             border-radius: 4px;
 
             position: relative;
-            left: 75%;
+            left: 0%;
 
             font-weight: bold;
 
-            
+
         }
-        .cart .orderbtn a:hover{
+
+        .cart .orderbtn a:hover {
             text-decoration: none;
             background-color: orange;
         }
 
 
-        .cartItem{
+        .cartItem {
             /* background-color: skyblue; */
             padding: 20px;
-            margin:10px;
+            margin: 10px;
             width: 100%;
             /* float: left; */
         }
 
-        .cartItem .cartedit{
+        .cartItem .cartedit {
             display: flex;
+            flex-direction: column;
         }
 
-        .cartedit input[type=text]{
+        .cartedit input[type=text] {
             text-align: center;
             font-size: 1.1em;
             width: 35px;
             font-weight: bold;
         }
 
-        .cartedit input[type=submit]{
-            border : 1px solid transparent;
+        .cartedit input[type=submit] {
+            border: 1px solid transparent;
             border-radius: 50%;
         }
 
-        .cartedit a{
-            margin-left: 40px;
+        .cartedit a {
+            margin-left: 20px;
             position: relative;
             bottom: 5px;
 
@@ -143,38 +265,42 @@ $custemail = $_SESSION['user'];
 
         }
 
-        .cartItemImageDetails img{
-            width: 100px;
-            margin-right:20px;
+        .cartItemImageDetails img {
+            height: 150px;
+            width: 80px;
+            /* margin-right:20px; */
 
         }
 
-        .cartItemImageDetails .cartItemDetails h3{
-            margin-top:20px;
+        .cartItemImageDetails .cartItemDetails h3 {
+            margin-top: 20px;
         }
 
-        .cartItemImageDetails{
+        .cartItemImageDetails {
 
             display: flex;
+            flex-direction: column;
 
         }
 
 
-        .totalDetails{
+        .totalDetails {
             /* background-color: green; */
             /* float: right; */
             /* background-color: white;
-            border: 1px solid black; */
+                border: 1px solid black; */
 
-            width: 45%;
+            /* width: 45%;
 
-            position: fixed;
-            top: 70px;
-            right: 0;
+                position: fixed;
+                top: 70px;
+                right: 0; */
         }
 
 
-        table, td, tr{
+        table,
+        td,
+        tr {
             /* border: 1px solid black; */
             border-collapse: collapse;
             margin-right: 10px;
@@ -182,153 +308,31 @@ $custemail = $_SESSION['user'];
             font-family: 'Roboto', sans-serif;
         }
 
-        @media only screen and (max-width: 450px){
-
-
-            .container1{
-                /* background-color: gray; */
-                margin:0;
-                padding:0;
-                /* padding: 10px; */
-            }
-
-            .cart{
-                width: 50%;
-                /* border: 1px solid black; */
-                padding-left: 30px;
-                /* background-color: white; */
-                
-            }
-
-            .cart .orderbtn{
-                /* background-color: skyblue; */
-                /* padding: 30px; */
-                width: 250px;
-                
-            }
-
-            .cart .orderbtn a{
-
-                background-color: #fb641b;
-                color: white;
-                /* padding: 15px 30px 15px 30px; */
-                border-radius: 4px;
-
-                position: relative;
-                left: 0%;
-
-                font-weight: bold;
-
-                
-            }
-            .cart .orderbtn a:hover{
-                text-decoration: none;
-                background-color: orange;
-            }
-
-
-            .cartItem{
-                /* background-color: skyblue; */
-                padding: 20px;
-                margin:10px;
-                width: 100%;
-                /* float: left; */
-            }
-
-            .cartItem .cartedit{
-                display: flex;
-                flex-direction:column;
-            }
-
-            .cartedit input[type=text]{
-                text-align: center;
-                font-size: 1.1em;
-                width: 35px;
-                font-weight: bold;
-            }
-
-            .cartedit input[type=submit]{
-                border : 1px solid transparent;
-                border-radius: 50%;
-            }
-
-            .cartedit a{
-                margin-left: 20px;
-                position: relative;
-                bottom: 5px;
-
-                text-decoration: none;
-
-            }
-
-            .cartItemImageDetails img{
-                height:150px;
-                width: 80px;
-                /* margin-right:20px; */
-
-            }
-
-            .cartItemImageDetails .cartItemDetails h3{
-                margin-top:20px;
-            }
-
-            .cartItemImageDetails{
-
-                display: flex;
-                flex-direction: column;
-
-            }
-
-
-            .totalDetails{
-                /* background-color: green; */
-                /* float: right; */
-                /* background-color: white;
-                border: 1px solid black; */
-
-                /* width: 45%;
-
-                position: fixed;
-                top: 70px;
-                right: 0; */
-            }
-
-
-            table, td, tr{
-                /* border: 1px solid black; */
-                border-collapse: collapse;
-                margin-right: 10px;
-
-                font-family: 'Roboto', sans-serif;
-            }
-
-        }
-
-
-
-	</style>
+    }
+    </style>
 </head>
+
 <body>
 
     <nav class="navbar navbar-inverse"">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            
-                <a class="navbar-brand" href="product-ui.php">
-                    MyMall
-                </a>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- <li><a href="#">test</a></li>
+        <div class=" container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="product-ui.php">
+                MyMall
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- <li><a href="#">test</a></li>
                     <li><a href="#">test</a></li> -->
-                </ul>
-            </div>
+            </ul>
+        </div>
         </div>
     </nav>
 
@@ -366,7 +370,7 @@ error_reporting(-1);
 
     ?>
 
-    
+
     <div class="container1">
 
         <div class="cart">
@@ -427,9 +431,9 @@ error_reporting(-1);
 
         </div>
 
-    
+
         <table class="totalDetails">
-            
+
             <tr>
                 <td colspan="2">
                     <h1 style="color: #878787; font-size: 30px;">Price Details</h1>
@@ -450,52 +454,52 @@ error_reporting(-1);
 
             <?php if($total>50000){ ?>
 
-                <tr>
-                    <td>
-                        <h3>Discount</h3>
-                    </td>
-                    <td>
-                        <?php
+            <tr>
+                <td>
+                    <h3>Discount</h3>
+                </td>
+                <td>
+                    <?php
                             echo "<h3 style='color: #388e3c;'>-₹".(5*$total/100)."</h3>";
                         ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h3 style="font-weight:bold">Total Amount</h3>
-                    </td>
-                    <td>
-                        <?php
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3 style="font-weight:bold">Total Amount</h3>
+                </td>
+                <td>
+                    <?php
                             echo "<h3 style='font-weight:bold'>₹".($total-(5*$total/100))."</h3>";
                         ?>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-                <tr>
-                    <td colspan="2">
-                        <h3 style='color: #388e3c;'>You will save ₹<?php echo "".(5*$total/100) ?> on this order</h3>
-                    </td>
-                </tr>
+            <tr>
+                <td colspan="2">
+                    <h3 style='color: #388e3c;'>You will save ₹<?php echo "".(5*$total/100) ?> on this order</h3>
+                </td>
+            </tr>
 
             <?php 
             }else{  ?>
 
-                <tr>
-                    <td>
-                        <h3 style="font-weight:bold">Total Amount</h3>
-                    </td>
-                    <td>
-                        <?php
+            <tr>
+                <td>
+                    <h3 style="font-weight:bold">Total Amount</h3>
+                </td>
+                <td>
+                    <?php
                             echo "<h3 style='font-weight:bold'>₹".($total)."</h3>";
                         ?>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-                <tr>
-                    <td colspan="2">
-                        <h4>Add ₹<?php echo "".(50000-$total) ?> more to get additional 5% discount</h4>
-                    </td>
-                </tr>
+            <tr>
+                <td colspan="2">
+                    <h4>Add ₹<?php echo "".(50000-$total) ?> more to get additional 5% discount</h4>
+                </td>
+            </tr>
 
             <?php } ?>
 
@@ -558,8 +562,9 @@ error_reporting(-1);
         }
 
     ?>
-    
 
-	
+
+
 </body>
+
 </html>

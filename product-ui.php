@@ -25,12 +25,12 @@ if(!isset($_SESSION['user'])){
 
 <html>
 
-  <head>
+<head>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
-    <link rel="stylesheet" type = "text/css" href ="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
@@ -40,148 +40,171 @@ if(!isset($_SESSION['user'])){
 </svg> -->
 
 
-<!-- from w3 schools -->
-  <!-- <link
+    <!-- from w3 schools -->
+    <!-- <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-  
+
 
     <title> Product UI </title>
 
 
     <style>
-
-    *{
-      box-sizing: border-box;
-      padding:0;
-      margin:0;
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
     }
 
-    .navbar-brand{
-      padding-bottom: 20px;
+    .navbar-brand {
+        padding-bottom: 20px;
     }
 
 
-    body{
-      /* background-color:lightgray; */
+    body {
+        /* background-color:lightgray; */
     }
 
-    .test{
-      background-color: lightgray;
+    .test {
+        background-color: lightgray;
     }
 
-    .container{
-      /* background-color: green; */
+    .container {
+        /* background-color: green; */
     }
 
-     #myCarousel{
-       margin: 10px;
-       width:100%;
-       /* background-color:blue; */
-     }
+    #myCarousel {
+        margin: 10px;
+        width: 100%;
+        /* background-color:blue; */
+    }
 
-     .col-md-3:hover{
-      transform: scaleY(1.07);
-      /* background-color:lightblue; */
-     }
+    .col-md-3:hover {
+        transform: scaleY(1.07);
+        /* background-color:lightblue; */
+    }
 
-     /* .backgroundBlue:hover{
+    /* .backgroundBlue:hover{
       transform: scaleY(1.06);
       background-color:lightblue;
      } */
 
-     .row{
-       margin:10px 0 10px 0;
-     }
-     .col-md-3{
-       padding:10px 0 10px 0;
-     }
+    .row {
+        margin: 10px 0 10px 0;
+    }
 
-     .category-search{
-       background-color: lightgray;
-       margin: 10px;
-       padding: 10px;
-     }
+    .col-md-3 {
+        padding: 10px 0 10px 0;
+    }
 
-     .categories{
-       /* padding: 20px; */
-       width:100%;
-       /* background-color: lightyellow; */
-       background-color: #ffe0e1;
-       height: 100px;
-       display: flex;
-       align-items: center;
-       justify-content: space-between;
-       padding: 0px 5px 0px 5px;
+    .category-search {
+        background-color: lightgray;
+        margin: 10px;
+        padding: 10px;
+    }
 
-     }
+    .categories {
+        /* padding: 20px; */
+        width: 100%;
+        /* background-color: lightyellow; */
+        background-color: #ffe0e1;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 5px 0px 5px;
 
-     .category{
-       text-align: center;
-     }
+    }
 
-     .search{
-       padding-bottom:10px;
-       padding-top: 0px;
-     }
+    .category {
+        text-align: center;
+    }
 
-     .searchbar{
-       padding-bottom: 0px;
-       border-radius: 10px;
-       width: 25%;
+    .search {
+        padding-bottom: 10px;
+        padding-top: 0px;
+    }
 
-       height: 44px;
+    .searchbar {
+        padding-bottom: 0px;
+        border-radius: 10px;
+        width: 25%;
 
-     }
+        height: 44px;
 
-     .search button{
-      padding: 6px 10px;
-      margin-top: 8px;
-      margin-right: 16px;
-      font-size: 20px;
-      border: none;
-      cursor: pointer;
-      background-color:lightgray;
-     }
+    }
 
-     .search button:hover{
-       background-color: gray;
-     }
+    .search button {
+        padding: 6px 10px;
+        margin-top: 8px;
+        margin-right: 16px;
+        font-size: 20px;
+        border: none;
+        cursor: pointer;
+        background-color: lightgray;
+    }
 
-     /* .addtocart{
+    .search button:hover {
+        background-color: gray;
+    }
+
+    /* .addtocart{
        background: #ff9f00;
      } */
 
-     .addedtocart{
-       color:black;
-       background-color:yellow;
-     }
+    .addedtocart {
+        color: black;
+        background-color: yellow;
+    }
 
-     .addedtocart:hover{
-      color:black;
-       background-color:yellow;
-     }
+    .addedtocart:hover {
+        color: black;
+        background-color: yellow;
+    }
 
-     @media only screen and (max-width: 480px){
-       .col-md-3{
-         min-height: 400px;
-       }
-     }
+    .pages-class-div {
+        display: flex;
 
+        justify-content: center;
 
+    }
+
+    .pages-class {
+        border: 1px solid black;
+        padding: 10px;
+        margin: 5px;
+
+    }
+
+    .previous-next{
+        border: 1px solid black;
+        padding: 10px 20px 10px 20px;
+        margin: 5px;
+        width: 90px;
+    }
+    .previous-next:hover{
+      background-color: gray;
+      color: white;
+    }
+
+    @media only screen and (max-width: 480px) {
+        .col-md-3 {
+            min-height: 400px;
+        }
+    }
     </style>
-  </head>
+</head>
 
 
 
-  <body>
+<body>
 
 
-     <?php
+    <?php
 
 
 
@@ -255,7 +278,7 @@ if(!isset($_SESSION['user'])){
 
 ?>
 
-<?php
+    <?php
 
     $con_for_name = Connect();
     $sql_for_name = "select custname from customer where custemail='$custemail'";
@@ -273,26 +296,26 @@ if(!isset($_SESSION['user'])){
 ?>
 
 
-<!-- From w3 schools -->
+    <!-- From w3 schools -->
 
 
-<nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-      <a class="navbar-brand" href="product-ui.php">
-        <!-- <img src="productimages/temp.jpg" alt="logo" style="width:40%;"> -->
-        MyMall
-      </a>
-    </div>
+    <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="product-ui.php">
+                    <!-- <img src="productimages/temp.jpg" alt="logo" style="width:40%;"> -->
+                    MyMall
+                </a>
+            </div>
 
 
-    <!-- <div class="dropdown">
+            <!-- <div class="dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
       <span class="caret"></span></button>
       <ul class="dropdown-menu">
@@ -303,9 +326,9 @@ if(!isset($_SESSION['user'])){
     </div> -->
 
 
-    <div class="collapse navbar-collapse" id="myNavbar">
+            <div class="collapse navbar-collapse" id="myNavbar">
 
-      <!-- <div class="dropdown">
+                <!-- <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
@@ -316,143 +339,164 @@ if(!isset($_SESSION['user'])){
       </div> -->
 
 
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#"><?php echo "Hello, ".$username  ?></a></li>
-        <li><a href="cart.php">Cart<strong><sub style="color:white;"><?php if($noofproductsincart>0) echo "(".$noofproductsincart.")" ?></sub></strong></a></li>
-        <li><a href="orders.php">Orders</a></li>
-        <li><a href="#" onclick='logout()'>Logout</a></li>
-      </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#"><?php echo "Hello, ".$username  ?></a></li>
+                    <li><a href="cart.php">Cart<strong><sub
+                                    style="color:white;"><?php if($noofproductsincart>0) echo "(".$noofproductsincart.")" ?></sub></strong></a>
+                    </li>
+                    <li><a href="orders.php">Orders</a></li>
+                    <li><a href="#" onclick='logout()'>Logout</a></li>
+                    <!-- <li><a href="logout.php">Logout</a></li> -->
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <div class="test">
+
+
+        <div class="container">
+
+            <!-- From w3 schools -->
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+
+                    <div class="item active">
+                        <img src="productimages/realmenarzo30a-slide.jpg" alt="realmenarzo30a" style="width:100%;">
+                    </div>
+
+                    <div class="item">
+                        <img src="productimages/oneplustv-slide.jpg" alt="oneplustv" style="width:100%;">
+                    </div>
+
+                    <div class="item">
+                        <img src="productimages/pocox3pro-slide.jpg" alt="pocox3pro" style="width:100%;">
+                    </div>
+
+
+
+
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <!-- <span class="glyphicon glyphicon-chevron-left"></span> -->
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+
+
+        <div class="category-search">
+
+
+            <div class="search">
+                <form method="post" action="product-ui.php">
+                    <input id="searchbar" class="searchbar" type="search" name="productname"
+                        placeholder="Search for products..." required>
+                    <!-- <button type="submit" name="search" value="search"><i class="fa fa-search"></i></button> -->
+
+                    <button type="submit" name="search" value="search"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg></button>
+
+
+
+                </form>
+            </div>
+
+
+            <div class="categories">
+
+                <form class="category" method="post" action="product-ui.php?category=mobiles">
+                    <input type="image" src="productimages/mobile-category.png" alt="mobiles" width="48" height="48">
+                    <p><b>Mobiles</b></p>
+                </form>
+
+                <form class="category" method="post" action="product-ui.php?category=fashion">
+                    <input type="image" src="productimages/fashion-category.png" alt="fashion" width="48" height="48">
+                    <p><b>Fashion</b></p>
+                </form>
+
+                <form class="category" method="post" action="product-ui.php?category=electronics">
+                    <input type="image" src="productimages/electronics-category.png" alt="electronics" width="48"
+                        height="48">
+                    <p><b>Electronics</b></p>
+                </form>
+
+                <form class="category" method="post" action="product-ui.php?category=appliances">
+                    <input type="image" src="productimages/appliances-category.png" alt="appliances" width="48"
+                        height="48">
+                    <p><b>Appliances</b></p>
+                </form>
+
+                <form class="category" method="post" action="product-ui.php?category=grocery">
+                    <input type="image" src="productimages/grocery-category.png" alt="grocery" width="48" height="48">
+                    <p><b>Grocery</b></p>
+                </form>
+
+            </div>
+
+
+
+        </div>
 
     </div>
-  </div>
-</nav>
 
+    <div class="container" style="width:95%;">
 
-
-
-<div class="test">
-
-
-  <div class="container">
-   
-      <!-- From w3 schools -->
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-
-      <div class="item active">
-        <img src="productimages/realmenarzo30a-slide.jpg" alt="realmenarzo30a" style="width:100%;">
-      </div>
-
-      <div class="item">
-        <img src="productimages/oneplustv-slide.jpg" alt="oneplustv" style="width:100%;">
-      </div>
-
-      <div class="item">
-        <img src="productimages/pocox3pro-slide.jpg" alt="pocox3pro" style="width:100%;">
-      </div>
-
-      
-
-
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <!-- <span class="glyphicon glyphicon-chevron-left"></span> -->
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-  </div>
-
-
-
-  <div class="category-search">
-
-      
-   <div class="search">
-      <form method="post" action="product-ui.php">
-        <input id="searchbar" class="searchbar" type="search" name="productname" placeholder="Search for products..." required>
-        <!-- <button type="submit" name="search" value="search"><i class="fa fa-search"></i></button> -->
-
-        <button type="submit" name="search" value="search"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-        </svg></button>
-
-
-        
-      </form>
-    </div>
-
-
-    <div class="categories">  
-
-      <form class="category" method="post" action="product-ui.php?category=mobiles">
-        <input type="image" src="productimages/mobile-category.png" alt="mobiles" width="48" height="48">
-        <p><b>Mobiles</b></p>
-      </form>
-
-      <form class="category" method="post" action="product-ui.php?category=fashion">
-        <input type="image" src="productimages/fashion-category.png" alt="fashion" width="48" height="48">
-        <p><b>Fashion</b></p>
-      </form>
-
-      <form class="category" method="post" action="product-ui.php?category=electronics">
-        <input type="image" src="productimages/electronics-category.png" alt="electronics" width="48" height="48">
-        <p><b>Electronics</b></p>
-      </form>
-
-      <form class="category" method="post" action="product-ui.php?category=appliances">
-        <input type="image" src="productimages/appliances-category.png" alt="appliances" width="48" height="48">
-        <p><b>Appliances</b></p>
-      </form>
-
-      <form class="category" method="post" action="product-ui.php?category=grocery">
-        <input type="image" src="productimages/grocery-category.png" alt="grocery" width="48" height="48">
-        <p><b>Grocery</b></p>
-      </form>
-
-    </div>
-
-    
-
-  </div>
-
- </div>
-
-<div class="container" style="width:95%;">
-
-<!-- Display all products from products table -->
-<?php
+        <!-- Display all products from products table -->
+        <?php
 
 // require 'connection.php';
 $conn = Connect();
 
-$sql = "SELECT * FROM product order by productid";
+if(isset($_GET["page"])){
+  $page = $_GET["page"];
+}
+else{
+  $page = 1;
+}
+
+$no_of_products_per_page = 12;
+
+$start_from = ($page - 1)*$no_of_products_per_page;
 
 
-if(!isset($_GET['category'])){
-  // $category = true;
-  $sql = "SELECT * FROM product order by productid";
+$sql = "SELECT * FROM product order by productid limit $no_of_products_per_page offset $start_from";
 
-}elseif ($_GET['category'] == "") {
-  # code...
-  $sql = "SELECT * FROM product order by productid";
-}else{
+if(isset($_GET['category'])){
+  if(!isset($_GET['category'])){
+    // $category = true;
+    $sql = "SELECT * FROM product order by productid";
 
-  $category = $_GET['category'];
-  $sql = "SELECT * FROM product where category='$category'";
+  }elseif ($_GET['category'] == "") {
+    # code...
+    $sql = "SELECT * FROM product order by productid";
+  }else{
+
+    $category = $_GET['category'];
+    $sql = "SELECT * FROM product where category='$category'";
+  }
 }
 
 if(isset($_POST['search'])){
@@ -492,47 +536,50 @@ if ($result->rowCount()/*mysqli_num_rows($result)*/ > 0)
       echo "<div class='row'>";
 
     ?>
-    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="col-md-3 col-sm-6 col-xs-6">
 
-     <form method="get" action="product-ui.php?id=<?php echo $row['productid']; ?>">
-      <div class="mypanel" align="center";>
-      <img src="productimages/<?php echo $row["productimage"]; ?>" class="img-responsive"  style="height:30%; border-radius:17px;">
+            <form method="get" action="product-ui.php?id=<?php echo $row['productid']; ?>">
+                <div class="mypanel" align="center" ;>
+                    <img src="productimages/<?php echo $row["productimage"]; ?>" class="img-responsive"
+                        style="height:30%; border-radius:17px;">
+
+                    <div class="backgroundBlue">
+
+                        <h4 class="text-dark"><?php echo $row["productname"]; ?></h4>
+                        <h5 class="text-info"><?php echo $row["productdesc"]; ?></h5>
+                        <h5 class="text-danger">&#8377; <?php echo $row["productprice"];?></h5>
+                        <!-- <h5 class="text-info">Quantity: <input type="number" min="1" max="25" name="quantity" class="form-control" value="1" style="width: 60px;"> </h5> -->
+
+
+                    </div>
+
+
+
+                    <input type="hidden" name="hidden_name" value="<?php echo $row['productname']; ?>">
+                    <input type="hidden" name="hidden_price" value="<?php echo $row['productprice']; ?>">
+                    <input type="hidden" name="id" value="<?php echo $row['productid'];  ?>">
+
+                    <?php if($row['addedtocart'] == 0) { ?>
+
+                    <input type="submit" name="add" class="btn btn-success addtocart" value="Add to Cart">
+
+                    <?php }else{ ?>
+
+                    <input type="button" onclick="location.href = 'cart.php'" name="viewcart" class="btn addedtocart"
+                        value="GO TO CART">
+
+                    <!-- <button onClick="index.html" class="btn addedtocart">GO TO CART</button> -->
+
+                    <?php 
       
-      <div class="backgroundBlue">
-      
-        <h4 class="text-dark"><?php echo $row["productname"]; ?></h4>
-        <h5 class="text-info"><?php echo $row["productdesc"]; ?></h5>
-        <h5 class="text-danger">&#8377; <?php echo $row["productprice"];?></h5>
-        <!-- <h5 class="text-info">Quantity: <input type="number" min="1" max="25" name="quantity" class="form-control" value="1" style="width: 60px;"> </h5> -->
+      }
+      ?>
+                </div>
+            </form>
 
+        </div>
 
-      </div>
-
-      
-
-      <input type="hidden" name="hidden_name" value="<?php echo $row['productname']; ?>">
-      <input type="hidden" name="hidden_price" value="<?php echo $row['productprice']; ?>">
-      <input type="hidden" name="id" value="<?php echo $row['productid'];  ?>">
-
-      <?php if($row['addedtocart'] == 0) { ?>
-
-      <input type="submit" name="add" class="btn btn-success addtocart" value="Add to Cart">
-
-        <?php }else{ ?>
-
-            <input type="button" onclick="location.href = 'cart.php'" name="viewcart" class="btn addedtocart" value="GO TO CART">
-
-            <!-- <button onClick="index.html" class="btn addedtocart">GO TO CART</button> -->
-
-        <?php }?>
-
-
-      </div>
-     </form>
-
-    </div>
-
-    <?php
+        <?php
      $count++;
      if($count==4)
      {
@@ -542,33 +589,68 @@ if ($result->rowCount()/*mysqli_num_rows($result)*/ > 0)
    }
     ?>
 
-</div>
-</div>
-
-<?php
-}
-else
-{
-  ?>
-
-  <div class="container">
-    <div class="jumbotron">
-      <center>
-         <label style="margin-left: 5px;color: red;"> <h1>Oops! No products available.</h1> </label>
-        <p>We'll let u know....:P</p>
-      </center>
-       
     </div>
-  </div>
+    </div>
 
-  <?php
+    <?php
 
-}
+      if(!isset($_GET["category"]) and !isset($_POST["search"])){
 
-?>
+        $sql_for_total_products = "select * from product";
+
+        $result_for_total_products = $conn->query($sql_for_total_products);
+
+        $row_sql_for_total_products = $result_for_total_products->rowCount();
+
+        $total_pages = ceil($row_sql_for_total_products/$no_of_products_per_page);
+
+        echo "<div class='pages-class-div'> ";
+
+        if($page>1){
+          echo "<a class='previous-next btn' href='product-ui.php?page=".($page-1)."'>Previous</a>";
+        }
+
+        for($i=1;$i<=$total_pages;$i++){
+          echo "<a class='pages-class btn btn-primary' href='product-ui.php?page=".$i."'>$i</a>";
+        }
+
+        if($page<$total_pages){
+          echo "<a class='previous-next btn' href='product-ui.php?page=".($page+1)."'>Next</a>";
+        }
+
+        echo "</div>";
+
+      }
+
+    ?>
 
 
-<?php
+    <?php
+      }
+      else
+      {
+    ?>
+
+    <div class="container">
+        <div class="jumbotron">
+            <center>
+                <label style="margin-left: 5px;color: red;">
+                    <h1>Oops! No products available.</h1>
+                </label>
+                <p>We'll let u know....:P</p>
+            </center>
+
+        </div>
+    </div>
+
+    <?php
+
+      } 
+
+    ?>
+
+
+    <?php
 
 
 
@@ -621,45 +703,46 @@ else
 
 ?>
 
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
 
-  <!-- TODO: Add SDKs for Firebase products that you want to use
+    <!-- TODO: Add SDKs for Firebase products that you want to use
       https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-analytics.js"></script>
-  
-  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-analytics.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-storage.js"></script>
 
 
-  <script>
+    <script>
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     var firebaseConfig = {
-      apiKey: "AIzaSyCHhyRQHmEwF9HQNb3iaM-SXhYGp-Ag31Y",
-      authDomain: "mymall-naveen.firebaseapp.com",
-      projectId: "mymall-naveen",
-      storageBucket: "mymall-naveen.appspot.com",
-      messagingSenderId: "1077253083611",
-      appId: "1:1077253083611:web:3cd5f1774a68670d3f97fe",
-      measurementId: "G-4BQC515TGN"
+        apiKey: "AIzaSyCHhyRQHmEwF9HQNb3iaM-SXhYGp-Ag31Y",
+        authDomain: "mymall-naveen.firebaseapp.com",
+        projectId: "mymall-naveen",
+        storageBucket: "mymall-naveen.appspot.com",
+        messagingSenderId: "1077253083611",
+        appId: "1:1077253083611:web:3cd5f1774a68670d3f97fe",
+        measurementId: "G-4BQC515TGN"
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
 
-      // Initialize Firebase
+    // Initialize Firebase
     // firebase.initializeApp(firebaseConfig);
     // firebase.analytics();
-  </script>
-
-  
-<script src="js/index1.js"></script>
+    </script>
 
 
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="js/logout.js"></script>
+
+
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script> -->
 
 </body>
+
 </html>
