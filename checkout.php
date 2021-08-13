@@ -245,33 +245,6 @@ error_reporting(-1);
 
 
 
-
-
-		// $name = 'Name to be displayed!';
-		// $message = 'Never Give Up!';
-		// $subject = 'Test mail!';
-		// $mail->isSMTP();
-		// $mail->Host = 'smtp.gmail.com';
-		// $mail->Port = 587;
-		// $mail->SMTPAuth = true;
-		// $mail->Username = 'ffaakkee.praneeth@gmail.com';
-		// $mail->Password = 'praneethsquare';
-		// $mail->SMTPSecure = 'tls';
-		// $mail->addReplyTo($custemail, $name);
-		// $mail->setFrom($custemail, $name);
-		// $mail->addAddress($custemail);
-		// $mail->Subject = "test subject";
-		// $mail->msgHtml($message);
-		// $mail->send();
-
-
-
-
-
-
-
-
-
 	} catch (Exception $e) {
 		echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 	}
